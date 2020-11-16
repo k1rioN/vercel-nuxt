@@ -1,11 +1,12 @@
 <template>
 <div class="container">
   <div class="films" >
-    <!-- <ul>
-      <li v-for="film in films" :key="film.data.ts">
-        {{film.data.title.Title}} 
-      </li> 
-    </ul>  -->
+    <ul>
+      <p v-for="film in films" :key="film.data.ts">
+        {{film.data.title.Title}} <br>
+        <img :src="film.data.title.Poster" :alt="film.data.title.Title">
+      </p> 
+    </ul> 
   </div>
 </div> 
 </template>
@@ -18,13 +19,13 @@ export default {
         films: []
       };
     },
-  //   async mounted() {
-  //     const res = await fetch(
-  //       "http://localhost:3001/api/filmlist"
-  //     );
-  //     const films = await res.json();
-  //     this.films = films.data; 
-  //   },
+    async mounted() {
+      const res = await fetch(
+        "http://localhost:3001/api/filmlist"
+      );
+      const films = await res.json();
+      this.films = films.data; 
+    },
    }
 </script>
 
